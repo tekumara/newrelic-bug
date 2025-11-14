@@ -8,7 +8,6 @@ from starlette.responses import Response
 app = FastAPI()
 
 class CanonicalLogMiddleware(BaseHTTPMiddleware):
-
     async def dispatch(self, request: Request, call_next: Callable[[Request], Awaitable[Response]]) -> Response:
         return await call_next(request)
 
