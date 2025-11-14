@@ -9,6 +9,9 @@ app = FastAPI()
 
 class CanonicalLogMiddleware(BaseHTTPMiddleware):
     async def dispatch(self, request: Request, call_next: Callable[[Request], Awaitable[Response]]) -> Response:
+        transaction = newrelic.agent.current_transaction()
+        transaction_name = transaction.name if transaction else None
+        print(f"CanonicalLogMiddleware: {transaction_name=}")
         return await call_next(request)
 
 app.add_middleware(
