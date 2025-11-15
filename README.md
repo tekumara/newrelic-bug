@@ -1,6 +1,8 @@
 # newrelic: Transactions not propagating from middleware repro
 
-We are missing transactions in the route code block when using middleware. To replicate:
+This repository reproduces an issue where transactions are not propagating from middleware to route handlers. See [newrelic-python-agent#1581](https://github.com/newrelic/newrelic-python-agent/issues/1581) for details.
+
+To reproduce:
 
 ```
 uv sync
